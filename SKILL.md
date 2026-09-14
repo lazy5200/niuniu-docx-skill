@@ -34,14 +34,14 @@ agent_created: true
 
 ## 1. 环境
 
-```
-C:\Users\mrlazy\.workbuddy\binaries\python\envs\default\Scripts\python.exe
-```
+使用当前环境提供的 Python 解释器；Windows 虚拟环境通常位于
+`<虚拟环境目录>\Scripts\python.exe`，macOS / Linux 通常位于
+`<虚拟环境目录>/bin/python`。不要在技能中硬编码用户名或个人目录。
 
 依赖：`lxml`、`pywin32`、`pymupdf`、`python-docx`（B 模式用）。
 缺则用该 venv 的 `-m pip install`，**不要**污染系统 Python。
 
-> ⚠️ 托管 python 本体（`...\versions\3.13.12\python.exe`）**没有 lxml**，一律用上面的 venv。
+> ⚠️ 运行前先确认所选解释器已安装 `lxml`；建议使用项目虚拟环境，不要污染系统 Python。
 > ⚠️ Windows 下 bash shim 可能半坏（`head`/`tail`/`ls`/`dirname` 报 command not found）。
 > 一律 **Write 落盘脚本 + 绝对路径 python + `> out.txt 2>&1` + Read 读回**，不要用 shell 管道。
 
@@ -175,8 +175,8 @@ CONTENT = [
     ('P',   '正文段落，首行自动缩进 2 汉字……'),
     ('C',   '$ systemctl restart xxx'),       # 命令：左缩进、不首行缩进
     ('TBLCAP', '表2-1 部署主机与登录信息'),     # 表题（自动置于表格上方、居中）
-    ('T',   ['主机', '账号'], [['192.0.2.10', 'admin']], [4153, 4153]),
-    ('FIG', r'D:\img\arch.png', 380, '图2-1 系统总体架构'),   # 插图 + 图题（一步到位）
+    ('T',   ['主机', '账号'], [['192.0.2.10', 'example-user']], [4153, 4153]),
+    ('FIG', r'assets\arch.png', 380, '图2-1 系统总体架构'),   # 插图 + 图题（一步到位）
     ('FIGCAP', '图2-2 数据流'),                # 单独放图题时用（置于图片下方）
 ]
 ```
@@ -195,9 +195,9 @@ CONTENT = [
 ### 支持的写法
 
 ```python
-('FIG', r'D:\img\arch.png')                  # 等比缩放到版心宽（不放大超过原图自然尺寸）
-('FIG', r'D:\img\arch.png', 380)             # 指定显示宽度 380 磅
-('FIG', r'D:\img\arch.png', 380, '图2-1 xx')  # 插图 + 图题一步到位（推荐）
+('FIG', r'assets\arch.png')                  # 等比缩放到版心宽（不放大超过原图自然尺寸）
+('FIG', r'assets\arch.png', 380)             # 指定显示宽度 380 磅
+('FIG', r'assets\arch.png', 380, '图2-1 xx')  # 插图 + 图题一步到位（推荐）
 ```
 
 ### 内部做了什么

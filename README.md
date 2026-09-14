@@ -1,6 +1,6 @@
 # docx-writer
 
-> niuniu107可用，基于电科文本规范魔改的中文正式文档（.docx）全流程技能 —— 按规范撰写、就地改写保格式、按模板重排结构、补/刷目录，并支持插图与 OMML 原生公式。
+面向中文正式文档（.docx）的全流程技能——按规范撰写、就地改写保格式、按模板重排结构、补/刷目录，并支持插图与 OMML 原生公式。
 
 一个面向 **中文技术文档 / 交付文档**（运维手册、设计说明书、验收文档、报告）的文档工程技能。
 它不靠"凭感觉排版"，而是以一份《规范.md》作为**格式基准**、以一个真实 docx 作为**外形基底**，
@@ -79,8 +79,8 @@ python scripts/build_docx.py \
   --header "系统名 - 文档类型" \
   --title "系统名-文档类型"
 
-python scripts/refresh_toc.py --docx 目标文档.docx --pdf 目标文档.pdf
-python scripts/check_spec.py --pdf 目标文档.pdf
+python scripts/refresh_toc.py 目标文档.docx --pdf 目标文档.pdf
+python scripts/check_spec.py 目标文档.docx --pdf 目标文档.pdf
 ```
 
 ## 内容表格式
@@ -93,7 +93,7 @@ CONTENT = [
     ('C',      '$ systemctl restart demo-service'),
     ('TBLCAP', '表1-1 术语与说明'),
     ('T',      ['术语', '说明'], [['内容表', '描述文档正文的元组列表']], [2000, 6306]),
-    ('FIG',    r'D:\img\arch.png', 380, '图3-1 系统总体架构'),
+    ('FIG',    r'assets\arch.png', 380, '图3-1 系统总体架构'),
 ]
 ```
 
