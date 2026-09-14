@@ -1,0 +1,21 @@
+# 统一按 LF 存储，检出时按平台还原
+* text=auto
+
+# 明确文本类型
+*.py   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+# 二进制
+*.docx binary
+*.xlsx binary
+*.pptx binary
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.zip  binary

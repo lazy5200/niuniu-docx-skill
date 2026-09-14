@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 构建与运行产物
+build/
+dist/
+out/
+*.log
+out.txt
+err.txt
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地个人配置（不要提交）
+*.local.py
+content.local.py
